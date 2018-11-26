@@ -1,0 +1,49 @@
+# riddler-chess
+
+from random import random
+
+def game(): #one game of chess
+    x = random()
+    if x >= .8:
+        score = 1
+    elif x < .15:
+        score = 0
+    else:
+        score = .5
+    return score
+
+def match(): #score from one twelve-game match
+    tab = 0
+    for i in range(12):
+        tab += game()
+    return tab
+
+def odds(): #odds better player wins twelve-game match outright (500k runs)
+    wins = 0
+    for i in range(500000):
+        if match() >= 6.5:
+            wins +=1
+    wins = float(wins)
+    print wins / 500000
+
+def flexmatch(a): #match score over a games
+    tab = 0
+    for i in range(a):
+        tab += game()
+    return tab
+
+def flexodds(b): #odds better player wins b-game match outright(500k runs).
+#b probably needs to be even. Easily fixed buy too lazy tonight . . .
+    wins = 0
+    for i in range(500000):
+        if flexmatch(b) > b/2:
+            wins += 1
+    wins = float(wins)
+    print b, wins / 500000
+
+odds()
+odds()
+odds()
+flexodds(80)
+flexodds(240)
+flexodds(770)
