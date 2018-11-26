@@ -33,7 +33,7 @@ def flexmatch(a): #match score over a games
     return tab
 
 def flexodds(b): #odds better player wins b-game match outright(500k runs).
-#b probably needs to be even. Easily fixed buy too lazy tonight . . .
+#b probably needs to be even. Easily fixed but too lazy tonight.
     wins = 0
     for i in range(500000):
         if flexmatch(b) > b/2:
